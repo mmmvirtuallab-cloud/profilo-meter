@@ -1,0 +1,303 @@
+/* src/IntroPage.css */
+
+/* --- Layout Container --- */
+.intro-container {
+  background-color: #f1f5f9;
+  height: 100vh; /* Lock entire page to viewport height */
+  overflow: hidden; /* ABSOLUTELY NO SCROLLING */
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Blue Header --- */
+.intro-header {
+  background-color: #0f172ade;
+  color: white;
+  height: 70px; /* Slightly reduced height to save space */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  flex-shrink: 0; 
+  z-index: 1000;
+}
+
+.header-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+/* --- Header Button Wrapper --- */
+.header-actions {
+  display: flex;
+  gap: 15px; /* Spacing between Home and Experiment buttons */
+  align-items: center;
+}
+
+/* --- Specific Style for Home Button --- */
+.home-btn {
+  /* Make it distinct (Outline style) */
+  background-color: transparent; 
+  border: 1px solid white;
+  color: white;
+}
+
+.home-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* --- Button --- */
+.header-btn {
+  background-color: white;
+  color: #16223f;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-btn:hover {
+  background-color: #f8fafc;
+  transform: translateY(-2px);
+}
+
+/* --- Middle Content (Locked, No Scroll) --- */
+.content-wrapper {
+  flex: 1; /* Fills space between header and footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 40px; /* Reduced padding */
+  overflow: hidden; /* Prevents internal scrolling */
+}
+
+/* --- The White Card --- */
+.info-card {
+  background: white;
+  width: 100%;
+  max-width: 1200px; /* Wide card */
+  height: 100%;      /* Forces card to take full available height */
+  
+  display: flex;
+  flex-direction: column;
+  /* Distributes Title, Divider, and Content evenly */
+  justify-content: space-between; 
+  
+  padding: 30px 50px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.info-card h1 {
+  color: #1e293b;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: #e2e8f0;
+  width: 100%;
+  margin: 10px 0;
+}
+
+/* --- Content Area (Aim, Ack, Names) --- */
+.description-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  /* Evenly spaces the sections vertically */
+  justify-content: space-evenly; 
+}
+
+/* Section Styling */
+.aim-section h3, .ack-section h3 {
+  text-align: left; 
+  color: #1e293b; 
+  margin: 0 0 5px 0; /* Tight margins */
+  font-size: 1.3rem;
+}
+
+.aim-section p, .ack-section p {
+  font-size: 1.1rem;
+  color: #475569;
+  line-height: 1.5; /* Tighter line height */
+  text-align: justify;
+  margin: 0;
+}
+
+/* --- Student Grid (2 Columns) --- */
+.student-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 Columns */
+  gap: 10px 30px;
+  text-align: left; 
+  padding: 0;
+  margin: 0;
+  list-style: none; /* Removes bullets */
+}
+
+.student-list li {
+  color: #334155;
+  font-weight: 500;
+  font-size: 1rem;
+  background-color: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+/* --- Footer (Single Line) --- */
+.intro-footer {
+  background-color: #e2e8f0;
+  color: #64748b;
+  text-align: center;
+  padding: 10px 0; /* Small vertical padding */
+  font-size: 0.85rem;
+  border-top: 1px solid #cbd5e1;
+  width: 100%;
+  flex-shrink: 0;
+  white-space: nowrap; /* Forces single line */
+}
+
+/* =========================================
+   MOBILE RESPONSIVE STYLES (Max Width 768px)
+   ========================================= */
+/* =========================================
+   MOBILE RESPONSIVE STYLES (Max Width 768px)
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* 0. FIX BODY HEIGHT FOR MOBILE BROWSERS */
+    .intro-container {
+        height: 100dvh; /* Dynamic Viewport Height: Excludes URL bars */
+        min-height: -webkit-fill-available; /* iOS Fix */
+    }
+
+    /* 1. Header: Compact & Fixed */
+    .intro-header {
+        height: 55px; /* Smaller fixed height */
+        padding: 0 10px;
+        flex-shrink: 0; /* CRITICAL: Never let header shrink */
+    }
+
+    .header-title {
+        font-size: 1rem;
+        max-width: 40%; 
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* 2. Buttons: Tiny, Compact & Aligned */
+    .header-actions {
+        gap: 8px; 
+        display: flex;
+        align-items: center;
+    }
+
+    .header-btn, .home-btn {
+        padding: 5px 10px;       /* Very small padding */
+        font-size: 0.75rem;      /* Small font */
+        border-radius: 4px;
+        height: 30px;            /* Fixed height for alignment */
+        display: flex;           /* Flex to center text */
+        align-items: center;
+        line-height: 1;
+    }
+
+    /* 3. Wrapper: Flex Child that takes remaining space */
+    .content-wrapper {
+        flex: 1; /* Grow to fill space between header & footer */
+        display: flex;
+        flex-direction: column;
+        padding: 5px; /* Minimal edge padding */
+        overflow: hidden; /* Prevent wrapper itself from scrolling */
+        height: 100%;
+    }
+
+    /* 4. Info Card: Stretches to fill Wrapper */
+    .info-card {
+        width: 100%;
+        height: 100%; /* Fill the wrapper */
+        padding: 15px 15px 5px 15px; /* Tighter padding */
+        border-radius: 8px;
+        
+        display: flex;
+        flex-direction: column; /* Stack Title -> Content */
+    }
+
+    .info-card h1 {
+        font-size: 1.2rem; 
+        margin-bottom: 5px;
+        flex-shrink: 0; /* Title stays visible */
+    }
+
+    .divider {
+        margin: 5px 0;
+        flex-shrink: 0;
+    }
+
+    /* 5. Content Body: THE SCROLLABLE PART */
+    /* React uses .description-area based on your snippet */
+    .description-area {
+        flex: 1;         /* Take all remaining vertical space */
+        min-height: 0;   /* CRITICAL: Allows scrolling inside flex */
+        overflow-y: auto; /* Enable internal scrolling */
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 15px;
+        padding-top: 20px;
+        padding-right: 5px; 
+        text-align: left;
+    }
+
+    /* Typography inside card */
+    .aim-section h3, .ack-section h3 {
+        font-size: 1rem; 
+        margin-bottom: 5px; 
+    }
+
+    .aim-section p, .ack-section p {
+        font-size: 0.9rem; 
+        line-height: 1.6; 
+        margin: 0;
+    }
+
+    /* 6. Student Grid */
+    .student-list {
+        grid-template-columns: 1fr; /* 1 Column */
+        gap: 15px;
+        padding-bottom: 10px; /* Space at bottom of scroll */
+    }
+
+    .student-list li {
+        padding: 8px 10px; 
+        font-size: 0.85rem;
+    }
+
+    /* 7. Footer: ALWAYS VISIBLE */
+    .intro-footer {
+        flex-shrink: 0; /* CRITICAL: Never let footer be pushed off */
+        padding: 8px;
+        font-size: 0.65rem;
+        white-space: normal;
+        line-height: 1.3;
+        background-color: #e2e8f0;
+        z-index: 10;
+    }
+}
